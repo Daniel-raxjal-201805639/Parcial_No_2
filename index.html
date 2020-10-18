@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial No.2</title>
+    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/responsive.dataTables.min.css">
+    
+</head>
+<body>
+
+    <h1 class="text-center bg-primary text-white">Parcial No.2</h1>
+    <br>
+    <br>
+    
+    <div class="container-fluid p-4">
+        <span class="text-center" id="resultadoelim"></span>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrar" data-whatever="@mdo">Nuevo Registro<i class="fas fa-plus-circle"></i></button>
+        <table id="empleado" class="display responsive nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>CodigoEmpleado</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>TelMovil</th>
+                    <th>Puesto</th>
+                    <th>Contraseña</th>
+                    <th>Direccion</th>
+                    <th>Correo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            
+            <tfoot>
+                <tr>
+                    <th>CodigoEmpleado</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>TelMovil</th>
+                    <th>Puesto</th>
+                    <th>Contraseña</th>
+                    <th>Direccion</th>
+                    <th>Correo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!--inicio del modal de registro-->
+    <div class="modal fade" id="registrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Registrar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <form id="frmregistrar">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Codigo_Empleado:</label>
+                  <input type="numero" class="form-control" id="code">
+                  <label for="" id="lbno"></label>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Tel_Movil:</label>
+                    <input type="numero" class="form-control" id="tel">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Puesto:</label>
+                    <input type="numero" class="form-control" id="pues">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Contraseña:</label>
+                    <input type="numero" class="form-control" id="pass">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="dire">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">correo:</label>
+                    <input type="email" class="form-control" id="correo">
+                </div>
+                <button type="submit" class="btn btn-primary">Aguardar</button>
+            </form>
+        </div>
+            <div id="respuesta"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--fin del modal de registro-->
+
+    <!--inicio del modal de Editar-->
+    <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <form id="frmeditar">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Codigo_Empleado:</label>
+                  <input type="numero" class="form-control" id="code2">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre2">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido2">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Tel_Movil:</label>
+                    <input type="numero" class="form-control" id="tel2">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Puesto:</label>
+                    <input type="numero" class="form-control" id="pues2">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Contraseñia:</label>
+                    <input type="numero" class="form-control" id="pass2">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="dire2">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Correo:</label>
+                    <input type="email" class="form-control" id="correo2">
+                </div>
+                <button type="submit" class="btn btn-warning">Editar<i class="far fa-edit"></i></button>
+            </form>
+        </div>
+            <div id="resultadoedit"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--fin del modal de Editar-->
+
+    <!--inicio del modal Eliminar-->
+    <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <form id="frmeliminar">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Codigo_Empleado:</label>
+                  <input type="numero" class="form-control" id="code3">
+                 
+                </div>
+                <button type="submit" class="btn btn-danger">Eliminar<i class="far fa-trash-alt"></i></button>
+            </form>
+        </div>
+            <div id="resultadoelim"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--fin del modla de Eliminar-->
+
+
+
+    <script src="bootstrap-4.4.1-dist/js/jquery-3.3.1.js"></script>
+    <script src="bootstrap-4.4.1-dist/js/jquery.dataTables.min.js"></script>
+    <script src="bootstrap-4.4.1-dist/js/dataTables.responsive.min.js"></script>
+    <script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    <script src="json/jsone.js"></script>
+    <script src="https://kit.fontawesome.com/b1623f9e9b.js" crossorigin="anonymous"></script>
+</body>
+</html>
